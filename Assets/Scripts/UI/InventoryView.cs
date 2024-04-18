@@ -5,6 +5,9 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Git.Imitater967.MVPTutorial.UI {
+    /// <summary>
+    /// 背包V的实现
+    /// </summary>
     public class InventoryView : MonoBehaviour, IDropHandler {
         [field: SerializeField]
         public Button RefreshBnt { get; private set; }

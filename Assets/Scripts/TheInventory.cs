@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Git.Imitater967.MVPTutorial {
     /// <summary>
-    /// Model The Inventory
+    /// UI背包的实现
     /// </summary>
     public class TheInventory : AbstractInventoryModel {
         [SerializeField]
