@@ -11,6 +11,11 @@ namespace Git.Imitater967.MVPTutorial.UI {
 
         private void Awake() {
             m_ModelDict = new Dictionary<AbstractItemModel, ItemPresenter>();
+            m_View.OnDropEvent.AsObservable().Subscribe(gameObject => {
+                if (gameObject.TryGetComponent<ItemPresenter>(out var presenter)) {
+                    DestroyItemPresenter(presenter.Model);
+                }
+            }).AddTo(this);
         }
 
         private void Start() {
@@ -37,7 +42,7 @@ namespace Git.Imitater967.MVPTutorial.UI {
 
         public void InstantiateItemPresenter(AbstractItemModel model) {
             var itemPresenter = Instantiate(m_ItemPrefab, m_View.ItemParent);
-            itemPresenter.Initialize(model);
+            itemPresenter.Initialize(model,m_View.DragParent);
             m_ModelDict.Add(model,itemPresenter);
         }
     }

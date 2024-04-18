@@ -15,9 +15,13 @@ namespace Git.Imitater967.MVPTutorial.UI {
     }
 
     public class ItemPresenter : AbstractPresenter<AbstractItemModel,ItemView> {
-        public void Initialize(AbstractItemModel modelItem) {
+        public void Initialize(AbstractItemModel modelItem,Transform dragParent = null) {
             m_Model = modelItem;
             m_View.SetIconImage(m_Model.Sprite);
+            var drag = GetComponent<ItemDrag>();
+            if (drag != null) {
+                drag.Initialize(dragParent);
+            }
         }
     }
 }
